@@ -1,6 +1,7 @@
 apple-strings
 ==================
-
+![workflow badge](https://github.com/imWildCat/apple-strings/actions/workflows/test.yml/badge.svg)
+[![npm version](https://badge.fury.io/js/apple-strings.svg)](https://www.npmjs.com/package/apple-strings)
 
 Node.js module for processing .strings files used for localization in iOS/OSX development. Forked from <https://github.com/justinklemm/i18n-strings-files>, rewritten in TypeScript.
 
