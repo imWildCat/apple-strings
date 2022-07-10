@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { compile, parse, readFile, readFileSync, writeFile } from '../index';
+import { compile, parse, readFile, readFileAsync, readFileSync, writeFile, writeFileAsync } from '../index';
 import { I18nStringFileWithComment, I18nStringsFiles } from '../types';
 
 const fileTemp = path.resolve(__dirname, './temp.strings');
@@ -66,7 +66,19 @@ describe('Sync: Read, compile, parse', () => {
   );
 });
 
-
+describe('Async: Read, compile, parse, write', () => {
+  it('should populate object properties with values before and after', async () => {
+    const data = await readFileAsync(fileTest, { encoding: fileEncoding, wantsComments: true });
+    if (!data) {
+      throw new Error('File not found');
+    }
+    const str = compile(data, true);
+    const data2 = parse(str, true);
+    checkValuesWithComments(data2);
+    await writeFileAsync(fileTemp, data2, { encoding: fileEncoding });
+    fs.unlinkSync(fileTemp);
+  });
+});
 
 describe('Sync: Reading file into object', () => {
   it('should populate object properties with values', () => {

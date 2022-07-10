@@ -29,6 +29,18 @@ export function writeFile(file: string, data: I18nStringsFiles, options?: WriteF
   });
 }
 
+export async function writeFileAsync(file: string, data: I18nStringsFiles, options?: WriteFileOptionLike): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    writeFile(file, data, options, (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+}
+
 export function writeFileSync(file: string, data: I18nStringsFiles, options?: WriteFileOptionLike) {
   let encoding: string | undefined;
   let wantsComments: boolean | undefined;
