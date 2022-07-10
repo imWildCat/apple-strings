@@ -40,7 +40,7 @@ export function compile(data: I18nStringsFiles, wantsComments?: boolean): string
         output = output + '/* ' + comment + ' */\n';
       }
       // add line to output
-      output = output + '"' + msgid + '" = "' + msgstr + '";\n';
+      output = output + '"' + msgid + '" = "' + msgstr + '";\n\n';
     }
   }
   // return output string
