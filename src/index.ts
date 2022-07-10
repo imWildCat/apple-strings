@@ -12,8 +12,8 @@ export { convertStringToBuffer } from './convertStringToBuffer';
 
 export { parse } from './parse';
 
-export { readFile, readFileSync } from './readFile';
-export { writeFile, writeFileSync } from './writeFile';
+export { readFile, readFileAsync, readFileSync } from './readFile';
+export { writeFile, writeFileAsync, writeFileSync } from './writeFile';
 
 export {
   I18nStringsFilesNoComment,

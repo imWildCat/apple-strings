@@ -2,6 +2,7 @@ import fs from 'fs';
 import { convertBufferToString } from './convertBufferToString';
 import { parse } from './parse';
 import { CallbackFunc, OptionLike } from "./Option";
+import { I18nStringsFiles } from './types';
 
 export function readFile(file: string, options?: OptionLike, callback?: CallbackFunc) {
   let encoding: string | undefined;
@@ -23,6 +24,18 @@ export function readFile(file: string, options?: OptionLike, callback?: Callback
     const str = convertBufferToString(buffer, encoding);
     const data = parse(str, wantsComments);
     callback && callback(null, data);
+  });
+}
+
+export async function readFileAsync(file: string, options?: OptionLike): Promise<I18nStringsFiles | null> {
+  return new Promise<I18nStringsFiles | null>((resolve, reject) => {
+    readFile(file, options, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
   });
 }
 
