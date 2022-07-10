@@ -2,7 +2,7 @@ apple-strings
 ==================
 
 
-Node.js module for processing .strings files used for localization in iOS/OSX development
+Node.js module for processing .strings files used for localization in iOS/OSX development. Forked from <https://github.com/justinklemm/i18n-strings-files>, rewritten in TypeScript.
 
 ## Installing with [npm](http://npmjs.org/)
 
